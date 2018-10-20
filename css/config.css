@@ -1,0 +1,10 @@
+:root {
+    --td-ci-ticker-wrap-news-title: #333333; /*dark grey*/
+    --td-ci-ticker-wrap-bg: #56bcab; /*blue*/
+    --td-ci-news-list-element: #56bcab; /*blue*/
+    --td-ci-news-list-current-element: #a91412; /*red*/
+    --td-ci-news-list-bg: #888888; /*light grey*/
+    --td-ci-news-details-news: #000000; /*black*/
+    --td-ci-news-details-bg: #ebebeb; /*lighter grey*/
+    --td-ci-qr-code-icon: #ebebeb; /*lighter grey*/
+}
