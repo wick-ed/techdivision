@@ -1,2 +1,3 @@
-//document.getElementById("root").innerHTML = "Hello, world!";
-window.alert("Hello, world!");
+function start() {
+  document.getElementById("root").innerHTML = "Hello, world!";
+}
