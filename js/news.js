@@ -88,11 +88,11 @@ function updateNews() {
   $("#selected").removeAttr("id");
   $(".news-element").eq(current).attr("id", "selected"); 
   var currentNews = news[sidebarIndices[current]];
-  $("#title-container").html(currentNews.title);
-  $("#content-container").html(currentNews.text);
+  $("#title").html(currentNews.title);
+  $("#content").html(currentNews.text);
 
   current++;
-  if (current >= $(".news-element").length) {
+  if (current >= sidebarIndices.length) {
     current = 0;
   }
 }
