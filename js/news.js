@@ -1,9 +1,10 @@
 //const NEWS_URL = "https://larsroettig.de/news.json?jsoncallback=?";
 const NEWS_URL = "demo.json";
-const REFRESH_TIME = 1;  //5min // seconds
-const READ_TIME    = 5;   //30s  // seconds
+const DOWNLOAD_TIME = 5*60;  //5min // seconds
+const UPDATE_TIME   = 30;    //30s  // seconds
 
 var current = 0;
+var sidebarIndices = [];
 var news = [ { "title": "Development Team",
                "tags": [ ],
                "text": "Diese Nachrichtenseite wurde mit Hilfe von viel Kaffee und Popcorn realisiert \
@@ -48,8 +49,9 @@ var news = [ { "title": "Development Team",
 function start() {
   generateHTML();
   updateNews();
-//  window.setInterval(fetchNews, REFRESH_TIME*1000);
-  window.setInterval(updateNews, READ_TIME*1000);
+  fetchNews();
+  window.setInterval(fetchNews, DOWNLOAD_TIME*1000);
+  window.setInterval(updateNews, UPDATE_TIME*1000);
 }
 
 
@@ -63,6 +65,7 @@ function fetchNews() {
       newNews.sort(function(a, b) { return new Date(a.date) > new Date(b.date); });
       news = newNews;
       generateHTML();
+      updateNews();
     });
 }
 
@@ -72,14 +75,27 @@ function generateHTML() {
   $("#ticker").html("");
   $.each(news, function(index, n) {
     if (n.tags.includes("ticker")) {
-      $("#ticker").append("<div class=\"ticker__item\"><h1>+++ " + n.text + " +++</h1></div>");
+      $("#ticker").append("<div class=\"ticker__item\">+++ " + n.text + " +++</div>");
     } else {
-      $("#news_list").append("<div class=\"news-element\"><h1>" + n.title + "</h1></div>");
+      $("#news_list").append("<div class=\"news-element\">" + n.title + "</div>");
+      sidebarIndices.push(index);
     }
   });
+  $(".news-element").first().attr("id", "selected");
+  current = 0;
 }
 
 
 function updateNews() {
+  $("#selected").removeAttr("id");
+  $(".news-element").eq(current).attr("id", "selected");
+  var currentNews = news[sidebarIndices[current]];
+  $("#title").html(currentNews.title);
+  $("#content").html(currentNews.text);
 
+  current++;
+
+  if (current >= sidebarIndices.length) {
+    current = 0;
+  }
 }
