@@ -68,11 +68,15 @@ function fetchNews() {
 
 
 function generateHTML() {
-  var headlines = [];
-  $.each(news, function(index, message) {
-    headlines.push("<h1>" + message.title + " -> " + message.tags + "</h1>");
+  $("#news_list").html("");
+  $("#ticker").html("");
+  $.each(news, function(index, n) {
+    if (n.tags.includes("ticker")) {
+      $("#ticker").append("<div class=\"ticker__item\"><h1>+++ " + n.text + " +++</h1></div>");
+    } else {
+      $("#news_list").append("<div class=\"news-element\"><h1>" + n.title + "</h1></div>");
+    }
   });
-  $("#main").html(headlines);
 }
 
 
