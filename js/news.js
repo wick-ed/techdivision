@@ -1,25 +1,29 @@
-//const NEWS_URL = "https://larsroettig.de/news.json?jsoncallback=?";
-const NEWS_URL = "demo.json";
-const DOWNLOAD_TIME = 5*60;  //5min // seconds
-const UPDATE_TIME   = 30;    //30s  // seconds
+//const NEWS_URL = "https://larsroettig.de/news.json";
+const NEWS_URL      = "demo.json";
+const DOWNLOAD_TIME = 5*60;  // seconds
+const UPDATE_TIME   = 30;    // seconds
 
-var current = 0;
-var sidebarIndices = [];
+
+var current        = 0;   // index of the selected news that is displayed in the main content area
+var sidebarIndices = [];  // since all news are in one array but the sidebar does skip ticker news
+                          // we must store the indeces of sidebar news separately
+
+// dummy news that will be replaced by real news once the JSON file is downloaded
 var news = [ { "title": "Development Team",
-               "tags": [ ],
-               "text": "Diese Nachrichtenseite wurde mit Hilfe von viel Kaffee und Popcorn realisiert \
-                        an der TH Rosenheim.<br> \
+               "tags": [],
+               "text": "Diese Nachrichtenseite wurde mit Hilfe von viel Kaffee und Popcorn an der \
+                        TH Rosenheim realisiert.<br> \
                         <br>\
                         Sebastian Dörr (Layout)<br>\
                         Artur Faltenberg (Scripting)<br>\
                         Patrizia Jüttner (Hardware)<br>\
                         Ingrid Jürgensen (Hardware)",
-               "date": "2018-10-20T15:00:00",
+               "date": "2018-10-20 15:00:00",
                "extensions": []
              },
 
              { "title": "Nuzlose Fakten",
-               "tags": [ ],
+               "tags": [],
                "text": "Wussten Sie, dass 28% aller ITler ihren Beruf vor Familie und Freunden \
                         verheimlichen aus Angst davor um gratis Support gebeten zu werden?",
                "date": "2018-10-21 15:00:00",
@@ -27,11 +31,11 @@ var news = [ { "title": "Development Team",
              },
 
              { "title": "Sexy News",
-               "tags": [ ],
+               "tags": [],
                "text": "Eine Umfrage ergab, dass Computernerds die besten Liebhaber sind. \
                         82% der befragten Geeks gaben an, sie stellen die Lust der Partnerin \
                         über ihre eigene.",
-               "date": "2018-10-21T14:59:59",
+               "date": "2018-10-21 14:59:59",
                "extensions": []
              },
 
@@ -40,7 +44,7 @@ var news = [ { "title": "Development Team",
                "text": "Es konnten bisher keine Nachrichten geladen werden. Bitte prüfen Sie die \
                         Internetverbindung und fragen Sie bei Risiken und Nebenwirkungen Ihren \
                         Boss oder Informatiker.",
-               "date": "2018-10-21T15:00:00",
+               "date": "2018-10-21 15:00:00",
                "extensions": []
              },
            ];
@@ -64,6 +68,7 @@ function fetchNews() {
       });
       newNews.sort(function(a, b) { return new Date(a.date) > new Date(b.date); });
       news = newNews;
+      sidebarIndices = [];
       generateHTML();
       updateNews();
     });
@@ -73,6 +78,7 @@ function fetchNews() {
 function generateHTML() {
   $("#news_list").html("");
   $("#ticker").html("");
+
   $.each(news, function(index, n) {
     if (n.tags.includes("ticker")) {
       $("#ticker").append("<div class=\"ticker__item\">+++ " + n.text + " +++</div>");
@@ -81,6 +87,7 @@ function generateHTML() {
       sidebarIndices.push(index);
     }
   });
+
   $(".news-element").first().attr("id", "selected");
   current = 0;
 }
@@ -94,7 +101,6 @@ function updateNews() {
   $("#content").html(currentNews.text);
 
   current++;
-
   if (current >= sidebarIndices.length) {
     current = 0;
   }
