@@ -28,7 +28,7 @@ var news = [ { "title": "Development Team",
              { "title": "Sexy News",
                "tags": [ ],
                "text": "Eine Umfrage ergab, dass Computernerds die besten Liebhaber sind. \
-                        82% der befragten Geeks gaben an, sie stellten die Lust der Partnerin \
+                        82% der befragten Geeks gaben an, sie stellen die Lust der Partnerin \
                         über ihre eigene.",
                "date": "2018-10-21T14:59:59",
                "extensions": []
@@ -68,15 +68,11 @@ function fetchNews() {
 
 
 function generateHTML() {
-  var messages = [];
+  var headlines = [];
   $.each(news, function(index, message) {
-    var items = [];
-    $.each(message, function(key, val) {
-      items.push("<li class=\"" + key + "\">" + val + "</li>");
-    });
-    messages.push("<ul>" + items.join("") + "</ul>");
+    headlines.push("<h1>" + message.title + " -> " + message.tags + "</h1>");
   });
-  $("#main").html(messages);
+  $("#main").html(headlines);
 }
 
 
