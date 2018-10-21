@@ -1,0 +1,19 @@
+{
+  "id1": {
+      "title": " News 1",
+      "tags": [ "News" ],
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ",
+      "date": "2018-10-20 18:07:00",
+      "extensions": []
+  },
+
+  "id2": {
+      "title": "EPIC NEWS",
+      "tags": [ "News" ],
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. ",
+      "date": "2018-10-20 18:07:00",
+      "extensions": {
+          "url": "www.google.com"
+      }
+  }
+}
