@@ -29,15 +29,15 @@
   bottom: 0;
   width: 100%;
   overflow: hidden;
-  height: 10rem;
-  background-color: #333333;
+  height: 20%;
+  background-color: var(--td-ci-ticker-wrap-news-title);
   padding-left: 100%;
   box-sizing: content-box;
 }
 .ticker-wrap .ticker {
   display: inline-block;
-  height: 8rem;
-  line-height: 8rem;
+  height: 4rem;
+  line-height: 4rem;
   white-space: nowrap;
   padding-right: 100%;
   box-sizing: content-box;
@@ -52,7 +52,7 @@
 }
 .ticker-wrap .ticker__item {
   display: inline-block;
-  padding: 0 6rem;
-  font-size: 6rem;
-  color: #56bcab;
+  padding: 0 2.5rem;
+  font-size: 2.5rem;
+  color: var(--td-ci-ticker-wrap-bg);
 }
