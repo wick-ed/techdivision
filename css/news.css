@@ -1,4 +1,4 @@
-.root {
+#root {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,9 +9,7 @@
   box-sizing: border-box;
 
 }
-
-
-.news-list{
+#sidebar {
   position: fixed;
   top: 0;
   left: 0;
@@ -19,33 +17,44 @@
   height: 80%;
   background-color: var(--td-ci-news-list-bg:);
   box-sizing: border-box;
-}
 
-.news-list table{
-  position: fixed;
-  top: 0;
-  left:0;
-  width: 20%;
-  height: 80%;
-  border-collapse: collapse;
-  border: 0;
-}
-
-.news-list td, th{
-  height: 20%;
-  vertical-align: top;
- /* border:  1px black solid; */
 }
 
 #logo-techdivision {
   width: 100%;
-  height: 100%;
+  height: 16.6%;
+}
+
+#news-list{ 
+  width: 100%;
+  height: 83.4%;
+}
+
+.news-element{
+  font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
+  width: 100%;
+  height 100%;
+  background-color: var(--td-ci-news-list-bg:);
+  box-sizing: border-box;
+  padding: 1.5%;
+  font-size:20px;
+}
+
+#selected {
+  font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
+  width: 100%;
+  height 100%;
+  background-color: var(--td-ci-news-list-bg:);
+  box-sizing: border-box;
+  padding: 1.5%;
+  font-size: 20px;
+  font-color: var(--td-ci-news-list-current-element);
+
 }
 
 
 
-
-.news-details{ 
+#main{ 
   position: fixed;
   top: 0;
   right: 0;
@@ -55,5 +64,41 @@
   background-color: var(--td-ci-news-details-bg);
   box-sizing: border-box;
 }
+
+#title-container{
+  position:fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 16.6%;
+  padding-left: 1%;
+}
+
+#title{
+  vertical-align: bottom;
+  font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
+  font-size: 56px;
+  color: var(--td-ci-news-list-current-element);
+}
+
+#content-container{
+  position:fixed;
+  top: 16.6%;
+  right: 0;
+  width: 80%;
+  height: 63.4%;
+  padding-left: 1%;
+}
+
+#content{
+  font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
+  font-size: 40px;
+  vertical-align: top;
+  font-color: var(--td-ci-news-list-current-element);
+}
+
+
+
+
 
 
