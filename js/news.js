@@ -1,5 +1,4 @@
-//const NEWS_URL = "https://larsroettig.de/news.json";
-const NEWS_URL      = "demo.json";
+const NEWS_URL = "http://178.254.25.14/news.php";
 const DOWNLOAD_TIME = 5*60;  // seconds
 const UPDATE_TIME   = 30;    // seconds
 
@@ -44,9 +43,9 @@ var news = [ { "title": "Development Team",
                "text": "Es konnten bisher keine Nachrichten geladen werden. Bitte prüfen Sie die \
                         Internetverbindung und fragen Sie bei Risiken und Nebenwirkungen Ihren \
                         Boss oder Informatiker.",
-               "date": "2018-10-21 15:00:00",
+               "date": "2018-10-20 12:00:00",
                "extensions": []
-             },
+             }
            ];
 
 
@@ -60,24 +59,28 @@ function start() {
 
 
 function fetchNews() {
-  $.getJSON(NEWS_URL)
-    .done(function(data) {
-      var newNews = [];
-      $.each(data, function(key, val) {
-        newNews.push(val);
-      });
-      newNews.sort(function(a, b) { return new Date(a.date) > new Date(b.date); });
-      news = newNews;
-      sidebarIndices = [];
-      generateHTML();
-      updateNews();
+  $.getJSON(NEWS_URL + "?callback=?", function(data) {
+    var newNews = [];
+    $.each(data, function(key, val) {
+      newNews.push(val);
     });
+    newNews.sort(function(a, b) { return new Date(a.date) > new Date(b.date); });
+    news = newNews;
+    sidebarIndices = [];
+    generateHTML();
+    updateNews();
+  })
+  .fail(function(data, state, error) {
+    alert("error: " + state);
+  });
 }
 
 
 function generateHTML() {
   $("#news_list").html("");
   $("#ticker").html("");
+  $("#title").html("");
+  $("#content").html("");
 
   $.each(news, function(index, n) {
     if (n.tags.includes("ticker")) {

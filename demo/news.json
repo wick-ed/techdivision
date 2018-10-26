@@ -1,8 +1,8 @@
 {
-  "newsID0": {
-      "title": "Bad News",
+  "newsID1": {
+      "title": "Demo News",
       "tags": [],
-      "text": "This are only demo news since loading external JSON files will violate the same-origin policy. A possible solution is the usage of JSONP that the server must                provide.",
+      "text": "This news are only an example to show the usage of Techdivision Hot News.",
       "date": "2018-10-20 18:00:00",
       "extensions": []
   },
