@@ -6,7 +6,7 @@
       "error": {
           "title": "ERROR",
           "tags": [ "ticker" ],
-          "text": "Die Nachrichten konnten auf dem Server nicht gefunden werdenn. Bitte wenden Sei \
+          "text": "Die Nachrichten konnten auf dem Server nicht gefunden werdenn. Bitte wenden Sie \
                    sich an den Serveradministrator.",
           "date": "2018-10-20 12:00:00",
           "extensions": []
