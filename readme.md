@@ -42,3 +42,21 @@ tag are handled specially and their content is shown in the scrolling ticker bar
 
 The contents of the *demo/* directory should be stored on the server. If the JSON file is relocated
 don't forget to change the path in the PHP file accordingly.
+
+
+Automatization
+--------------
+
+The client is meant to run on a Raspberry Pi and display news on a monitor in full-screen mode
+of Firefox. In Raspbian the following packages must be installed:
+
+- `sudo apt-get install firefox-esr`
+- `sudo apt-get install xdotool`
+
+The `launch.sh` script can be added to the login script to launch the website in Firefox
+automatically after login.
+
+For example insert in `~/.profile`:
+```sh
+sh -c path/to/techdivision/launch.sh &
+```
